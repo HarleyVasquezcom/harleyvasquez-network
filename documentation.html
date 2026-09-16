@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><style>.slide-container{background-color:var(--slide-bg);}</style><meta charset="utf-8">
+<!DOCTYPE html><html><head><style>.slide-container{background-color:var(--slide-bg);}</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--slide-bg:#FDFDEF;--slide-fg:#13302B;--slide-primary:#00898A;--slide-accent:#2ED6D8;--slide-font-display:"Lexend";--slide-font-body:"DM Sans";}
@@ -21,7 +21,7 @@
 .meta span{font-size:11px;color:#6e8a85;line-height:1.2;max-width:200px;text-align:right;}
 .best{position:absolute;top:10px;right:10px;background:var(--slide-primary);color:#fff;border-radius:20px;padding:6px 10px;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
 </style><style>html,body{height:100%;}</style><!-- container-refs:["container:///mnt/data/gallery/server_rack_render.webp", "container:///mnt/data/gallery/image_2.webp", "container:///mnt/data/gallery/server_racks_side_profile.webp", "container:///mnt/data/gallery/server_racks_rear_view.webp"] -->
-</head><body><div class="slide-container">
+<style>html,body{width:100%;max-width:100%;overflow-x:hidden;margin:0;padding:0}body{min-height:100vh}.slide-container{margin:0 auto;transform-origin:top center}img,video{max-width:100%;height:auto}</style></head><body><div class="slide-container">
 <div class="head">
 <div class="head-left">
 <h2>360° Documentation — all angles</h2>
@@ -47,4 +47,4 @@
 <div class="meta"><b>Power & dressing</b><span>PDU-A / PDU-B + cable excellence</span></div>
 </div>
 </div>
-</div></body></html>
+</div><script>(function(){var BASE_W=1280,BASE_H=720;function fit(){var el=document.querySelector(".slide-container");if(!el)return;try{document.body.style.background=getComputedStyle(el).backgroundColor||""}catch(e){}var s=Math.min(window.innerWidth/BASE_W,1);if(s>=1){el.style.zoom="";el.style.transform="";el.style.marginBottom="";return;}if("zoom" in document.body.style){el.style.transform="";el.style.marginBottom="";el.style.zoom=s}else{el.style.zoom="";el.style.transform="scale("+s+")";el.style.marginBottom=(-(BASE_H*(1-s)))+"px"}}window.addEventListener("resize",fit);window.addEventListener("orientationchange",function(){setTimeout(fit,120)});if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fit)}fit()})();</script></body></html>

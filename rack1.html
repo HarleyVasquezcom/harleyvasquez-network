@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><style>.slide-container{background-color:var(--slide-bg);}</style><meta charset="utf-8">
+<!DOCTYPE html><html><head><style>.slide-container{background-color:var(--slide-bg);}</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -74,7 +74,7 @@
   font-size:11px;font-weight:600;letter-spacing:0.08em;padding:8px 12px;border-radius:999px;
 }
 </style><style>html,body{height:100%;}</style><!-- container-refs:["container:///mnt/data/gallery/server_rack_render.webp"] -->
-</head><body><div class="slide-container">
+<style>html,body{width:100%;max-width:100%;overflow-x:hidden;margin:0;padding:0}body{min-height:100vh}.slide-container{margin:0 auto;transform-origin:top center}img,video{max-width:100%;height:auto}</style></head><body><div class="slide-container">
 <div class="left">
 <div class="eyebrow">RACK 1 • 172.30.24.13 • Production Standard</div>
 <h2 class="h2">CTS Rack 1<br><span>core distribution + WAN edge</span></h2>
@@ -118,4 +118,4 @@
 <div class="o-item"><div class="o-num">100%</div><div class="o-lab">Labeled ports</div></div>
 </div>
 </div>
-</div></body></html>
+</div><script>(function(){var BASE_W=1280,BASE_H=720;function fit(){var el=document.querySelector(".slide-container");if(!el)return;try{document.body.style.background=getComputedStyle(el).backgroundColor||""}catch(e){}var s=Math.min(window.innerWidth/BASE_W,1);if(s>=1){el.style.zoom="";el.style.transform="";el.style.marginBottom="";return;}if("zoom" in document.body.style){el.style.transform="";el.style.marginBottom="";el.style.zoom=s}else{el.style.zoom="";el.style.transform="scale("+s+")";el.style.marginBottom=(-(BASE_H*(1-s)))+"px"}}window.addEventListener("resize",fit);window.addEventListener("orientationchange",function(){setTimeout(fit,120)});if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fit)}fit()})();</script></body></html>

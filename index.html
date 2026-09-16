@@ -5,28 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harley Vasquez Networks - Portfolio</title>
 <style>
-body{margin:0;font-family:Inter,sans-serif;background:#0a0f0e;color:#fff}
-header{padding:20px 40px;display:flex;align-items:center;gap:15px;border-bottom:1px solid #13302B}
-nav{padding:20px 40px;display:flex;flex-wrap:wrap;gap:10px}
-nav a{color:#22C0C7;text-decoration:none;padding:8px 16px;border:1px solid #22C0C7;border-radius:20px;font-size:14px}
-nav a:hover{background:#22C0C7;color:#000}
-iframe{width:100%;height:80vh;border:none;background:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:#0a0f0e;color:#fff;min-height:100vh;display:flex;flex-direction:column}
+header{padding:clamp(14px,3vw,20px) clamp(16px,4vw,40px);display:flex;align-items:center;gap:15px;border-bottom:1px solid #13302B}
+header h2{margin:0;font-size:clamp(1rem,2.5vw + .6rem,1.5rem);line-height:1.25}
+nav{padding:clamp(12px,2.5vw,20px) clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:10px}
+nav a{color:#22C0C7;text-decoration:none;padding:10px 18px;border:1px solid #22C0C7;border-radius:20px;font-size:14px;line-height:1;min-height:44px;display:inline-flex;align-items:center;touch-action:manipulation}
+nav a:hover,nav a:focus-visible{background:#22C0C7;color:#000}
+nav a.active{background:#22C0C7;color:#000}
+main{flex:1;display:flex;padding:0 clamp(8px,2vw,16px) clamp(8px,2vw,16px)}
+iframe{width:100%;height:80vh;height:80dvh;border:none;border-radius:12px;background:#fff;flex:1}
+@media (max-width:640px){
+  nav{gap:8px}
+  nav a{flex:1 1 calc(50% - 8px);justify-content:center;font-size:13px;padding:12px 10px}
+  iframe{height:78vh;height:78dvh;border-radius:8px}
+  main{padding:0 8px 8px}
+}
 </style>
 </head>
 <body>
-<header><h2>Harley Vasquez Networks — RACK 1 & 2 Portfolio</h2></header>
-<nav>
+<header><h2>Harley Vasquez Networks &mdash; RACK 1 &amp; 2 Portfolio</h2></header>
+<nav id="menu">
 <a href="cover.html" target="viewer">01 Cover</a>
 <a href="executive.html" target="viewer">02 Executive</a>
 <a href="challenge.html" target="viewer">03 Challenge</a>
 <a href="solution.html" target="viewer">04 Solution</a>
-<a href="documentation.html" target="viewer">05 360° Views</a>
+<a href="documentation.html" target="viewer">05 360&deg; Views</a>
 <a href="rack1.html" target="viewer">06 RACK 1</a>
 <a href="rack2.html" target="viewer">07 RACK 2</a>
 <a href="branding.html" target="viewer">08 Branding</a>
 <a href="methodology.html" target="viewer">09 Methodology</a>
 <a href="contact.html" target="viewer">10 Contact</a>
 </nav>
-<iframe name="viewer" src="cover.html"></iframe>
+<main><iframe name="viewer" src="cover.html" title="Portfolio viewer" allowfullscreen></iframe></main>
+<script>
+(function(){
+  var links=document.querySelectorAll('#menu a');
+  function mark(el){links.forEach(function(a){a.classList.remove('active')});if(el)el.classList.add('active')}
+  links.forEach(function(a){a.addEventListener('click',function(){mark(a)})});
+  if(links.length)links[0].classList.add('active');
+})();
+</script>
 </body>
 </html>
