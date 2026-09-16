@@ -8,96 +8,66 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:#0a0f0e;color:#fff;min-height:100vh;display:flex;flex-direction:column}
 header{padding:clamp(14px,3vw,20px) clamp(16px,4vw,40px);display:flex;align-items:center;gap:15px;border-bottom:1px solid #13302B}
-header h2{margin:0;font-size:clamp(1rem,2.5vw + .6rem,1.5rem);line-height:1.25}
-/* === Steel accordion nav === */
-nav#menu{padding:clamp(12px,2.5vw,20px) clamp(16px,4vw,40px);display:flex;flex-direction:column;gap:10px}
-.acc{border:1px solid #565d64;border-radius:12px;overflow:hidden;background:#0e1514;box-shadow:0 4px 14px rgba(0,0,0,.35)}
-.acc-head{width:100%;display:flex;align-items:center;gap:12px;min-height:50px;padding:12px 16px;cursor:pointer;border:none;touch-action:manipulation;font:inherit;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#1b2127;background:linear-gradient(180deg,#f5f7f8 0%,#d3d8dd 42%,#a6adb4 55%,#e2e6e9 100%)}
-.acc-head:hover{filter:brightness(1.06)}
-.acc-head:focus-visible{outline:2px solid #22C0C7;outline-offset:2px}
-.acc-num{background:#1b2127;color:#2ED6D8;border-radius:6px;padding:3px 9px;font-size:12px;letter-spacing:.1em}
-.acc-title{flex:1;text-align:left}
-.acc-chev{font-size:12px;transition:transform .25s ease}
-.acc-head[aria-expanded="false"] .acc-chev{transform:rotate(-90deg)}
-.acc-panel{display:flex;flex-direction:column;gap:8px;padding:12px;border-top:1px solid #565d64}
-.acc-panel[hidden]{display:none}
-.acc-panel a{color:#22C0C7;text-decoration:none;padding:10px 18px;border:1px solid #22C0C7;border-radius:20px;font-size:14px;line-height:1.3;min-height:44px;display:flex;align-items:center;touch-action:manipulation}
-.acc-panel a:hover,.acc-panel a:focus-visible{background:#22C0C7;color:#000}
-.acc-panel a.active{background:#22C0C7;color:#000}
+header h2{margin:0;font-size:clamp(1rem,2.5vw + .6rem,1.5rem);line-height:1.25;flex:1}
+/* Hamburger: mobile only */
+#menuBtn{display:none;margin-left:auto;width:48px;height:48px;flex:0 0 48px;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:transparent;border:1px solid #22C0C7;border-radius:12px;cursor:pointer;touch-action:manipulation}
+#menuBtn span{display:block;width:22px;height:2px;background:#22C0C7;border-radius:2px;transition:transform .25s ease,opacity .2s ease}
+#menuBtn[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+#menuBtn[aria-expanded="true"] span:nth-child(2){opacity:0}
+#menuBtn[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+#menuBtn:focus-visible{outline:2px solid #22C0C7;outline-offset:2px}
+/* Pill menu (restored design) */
+nav#menu{padding:clamp(12px,2.5vw,20px) clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:10px}
+nav#menu a{color:#22C0C7;text-decoration:none;padding:10px 18px;border:1px solid #22C0C7;border-radius:20px;font-size:14px;line-height:1;min-height:44px;display:inline-flex;align-items:center;touch-action:manipulation}
+nav#menu a:hover,nav#menu a:focus-visible{background:#22C0C7;color:#000}
+nav#menu a.active{background:#22C0C7;color:#000}
 main{flex:1;display:flex;padding:0 clamp(8px,2vw,16px) clamp(8px,2vw,16px)}
 iframe{width:100%;height:80vh;height:80dvh;border:none;border-radius:12px;background:#fff;flex:1}
-@media (min-width:641px){
-  nav#menu{flex-direction:row;align-items:start}
-  .acc{flex:1;display:flex;flex-direction:column}
-  .acc-panel{flex-direction:row;flex-wrap:wrap}
-  .acc-panel a{flex:1 1 calc(50% - 8px);justify-content:center;text-align:center}
-}
 @media (max-width:640px){
-  nav#menu{padding:12px 16px}
+  #menuBtn{display:inline-flex}
+  nav#menu{display:none;flex-direction:column;flex-wrap:nowrap;gap:8px;padding:12px 16px}
+  nav#menu.open{display:flex}
+  nav#menu a{justify-content:center;font-size:13px;padding:12px 10px}
   iframe{height:78vh;height:78dvh;border-radius:8px}
   main{padding:0 8px 8px}
 }
 </style>
 </head>
 <body>
-<header><h2>Harley Vasquez Networks &mdash; RACK 1 &amp; 2 Portfolio</h2></header>
+<header>
+<h2>Harley Vasquez Networks &mdash; RACK 1 &amp; 2 Portfolio</h2>
+<button id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</header>
 <nav id="menu" aria-label="Portfolio sections">
-  <div class="acc" data-acc>
-    <button class="acc-head" aria-expanded="true" aria-controls="acc-panel-1" id="acc-btn-1"><span class="acc-num">01</span><span class="acc-title">Overview</span><span class="acc-chev" aria-hidden="true">&#9662;</span></button>
-    <div class="acc-panel" id="acc-panel-1" role="region" aria-labelledby="acc-btn-1">
-      <a href="cover.html" target="viewer">01 Cover</a>
-      <a href="executive.html" target="viewer">02 Executive</a>
-      <a href="challenge.html" target="viewer">03 Challenge</a>
-    </div>
-  </div>
-  <div class="acc" data-acc>
-    <button class="acc-head" aria-expanded="false" aria-controls="acc-panel-2" id="acc-btn-2"><span class="acc-num">02</span><span class="acc-title">Solution &amp; Racks</span><span class="acc-chev" aria-hidden="true">&#9662;</span></button>
-    <div class="acc-panel" id="acc-panel-2" role="region" aria-labelledby="acc-btn-2" hidden>
-      <a href="solution.html" target="viewer">04 Solution</a>
-      <a href="documentation.html" target="viewer">05 360&deg; Views</a>
-      <a href="rack1.html" target="viewer">06 RACK 1</a>
-      <a href="rack2.html" target="viewer">07 RACK 2</a>
-    </div>
-  </div>
-  <div class="acc" data-acc>
-    <button class="acc-head" aria-expanded="false" aria-controls="acc-panel-3" id="acc-btn-3"><span class="acc-num">03</span><span class="acc-title">Brand &amp; Handover</span><span class="acc-chev" aria-hidden="true">&#9662;</span></button>
-    <div class="acc-panel" id="acc-panel-3" role="region" aria-labelledby="acc-btn-3" hidden>
-      <a href="branding.html" target="viewer">08 Branding</a>
-      <a href="methodology.html" target="viewer">09 Methodology</a>
-      <a href="contact.html" target="viewer">10 Contact</a>
-    </div>
-  </div>
+<a href="cover.html" target="viewer">01 Cover</a>
+<a href="executive.html" target="viewer">02 Executive</a>
+<a href="challenge.html" target="viewer">03 Challenge</a>
+<a href="solution.html" target="viewer">04 Solution</a>
+<a href="documentation.html" target="viewer">05 360&deg; Views</a>
+<a href="rack1.html" target="viewer">06 RACK 1</a>
+<a href="rack2.html" target="viewer">07 RACK 2</a>
+<a href="branding.html" target="viewer">08 Branding</a>
+<a href="methodology.html" target="viewer">09 Methodology</a>
+<a href="contact.html" target="viewer">10 Contact</a>
 </nav>
 <main><iframe name="viewer" src="cover.html" title="Portfolio viewer" allowfullscreen></iframe></main>
 <script>
 (function(){
-  var groups=document.querySelectorAll('#menu [data-acc]');
-  function setGroup(g,open){
-    g.querySelector('.acc-head').setAttribute('aria-expanded',String(open));
-    g.querySelector('.acc-panel').hidden=!open;
+  var btn=document.getElementById('menuBtn');
+  var menu=document.getElementById('menu');
+  function isMobile(){return window.innerWidth<=640;}
+  function setOpen(open){
+    btn.setAttribute('aria-expanded',String(open));
+    if(open){menu.classList.add('open');}else{menu.classList.remove('open');}
   }
-  groups.forEach(function(g){
-    g.querySelector('.acc-head').addEventListener('click',function(){
-      setGroup(g,g.querySelector('.acc-panel').hidden);
-    });
-  });
-  function wide(){return window.innerWidth>640;}
-  function syncToViewport(){
-    if(wide()){groups.forEach(function(g){setGroup(g,true);});}
-    else{
-      var anyOpen=false;
-      groups.forEach(function(g){if(!g.querySelector('.acc-panel').hidden)anyOpen=true;});
-      if(!anyOpen&&groups.length)setGroup(groups[0],true);
-    }
-  }
-  window.addEventListener('resize',syncToViewport);
-  var links=document.querySelectorAll('#menu a');
+  btn.addEventListener('click',function(){setOpen(!menu.classList.contains('open'));});
+  window.addEventListener('resize',function(){if(!isMobile())setOpen(false);});
+  var links=menu.querySelectorAll('a');
   function mark(el){links.forEach(function(a){a.classList.remove('active')});if(el)el.classList.add('active')}
   links.forEach(function(a){a.addEventListener('click',function(){
     mark(a);
-    if(!wide()){var g=a.closest('[data-acc]');if(g)setGroup(g,false);}
+    if(isMobile())setOpen(false);
   })});
-  syncToViewport();
   if(links.length)links[0].classList.add('active');
 })();
 </script>
